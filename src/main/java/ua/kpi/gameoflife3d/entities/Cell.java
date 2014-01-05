@@ -1,28 +1,34 @@
 package ua.kpi.gameoflife3d.entities;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author harker777
  */
 public class Cell {
 
-    Cell(CellState cellState) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    private List<CellState> history;
 
     Cell() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this(CellState.DEAD);
+    }
+
+    Cell(CellState cellState) {
+        history = new LinkedList<CellState>();
+        history.add(cellState);
     }
 
     CellState getCurrentState() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return history.get(history.size() - 1);
     }
 
     void setState(CellState cellState) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        history.add(cellState);
     }
 
     CellState[] getStates() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return history.toArray(new CellState[]{});
     }
 }

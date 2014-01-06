@@ -33,6 +33,10 @@ public class Cell {
     }
 
     CellState getOldState(int stepsToGoBack) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (stepsToGoBack < 0 || stepsToGoBack >= history.size()) {
+            throw new IllegalArgumentException();
+        } else {
+            return history.get(history.size() - stepsToGoBack - 1);
+        }
     }
 }

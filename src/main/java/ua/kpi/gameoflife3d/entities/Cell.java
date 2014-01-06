@@ -39,4 +39,26 @@ public class Cell {
             return history.get(history.size() - stepsToGoBack - 1);
         }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (this.history != null ? this.history.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cell other = (Cell) obj;
+        if (this.history != other.history && (this.history == null || !this.history.equals(other.history))) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -55,11 +55,34 @@ public class CellTest {
     }
 
     @Test
-    public void testSetStateChangesCurrentStateHistory() {
+    public void testSetStateChangesCurrentState() {
         Cell cell = new Cell(CellState.ALIVE);
         cell.setState(CellState.DEAD);
         CellState expResult = CellState.DEAD;
         CellState actResult = cell.getCurrentState();
         assertEquals(expResult, actResult);
+    }
+
+    @Test
+    public void testGetOldStateWithCorrectParameter() {
+        Cell cell = new Cell(CellState.ALIVE);
+        cell.setState(CellState.DEAD);
+        CellState expResult = CellState.ALIVE;
+        CellState actResult = cell.getOldState(1);
+        assertEquals(expResult, actResult);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetOldStateThrowsExceptionWithNegativeParameter() {
+        Cell cell = new Cell(CellState.ALIVE);
+        cell.setState(CellState.DEAD);
+        cell.getOldState(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetOldStateThrowsExceptionWithToBigParameter() {
+        Cell cell = new Cell(CellState.ALIVE);
+        cell.setState(CellState.DEAD);
+        cell.getOldState(2);
     }
 }

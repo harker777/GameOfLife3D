@@ -31,4 +31,8 @@ public class Cell {
     CellState[] getStates() {
         return history.toArray(new CellState[]{});
     }
+
+    CellState getOldState(int stepsToGoBack) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -11,28 +11,28 @@ public class Cell {
 
     private List<CellState> history;
 
-    Cell() {
+    public Cell() {
         this(CellState.DEAD);
     }
 
-    Cell(CellState cellState) {
+    public Cell(CellState cellState) {
         history = new LinkedList<CellState>();
         history.add(cellState);
     }
 
-    CellState getCurrentState() {
+    public CellState getCurrentState() {
         return history.get(history.size() - 1);
     }
 
-    void setState(CellState cellState) {
+    public void setState(CellState cellState) {
         history.add(cellState);
     }
 
-    CellState[] getStates() {
+    public CellState[] getStates() {
         return history.toArray(new CellState[]{});
     }
 
-    CellState getOldState(int stepsToGoBack) {
+    public CellState getOldState(int stepsToGoBack) {
         if (stepsToGoBack < 0 || stepsToGoBack >= history.size()) {
             throw new IllegalArgumentException();
         } else {
